@@ -1,13 +1,26 @@
-const pi = Math.PI;
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+
 const minWall = 2;      //межа для зупинки, в пікселях
-let length = 10;
+
 
 function draw(x, y, u, length){
-    if(length < minWall) return;
-    length *= 0.7;
-    //тут шось з x, y треба зробити
+    if(length < minWall) return;        //базовий випадок
+    length *= 0.7;                      //зменшуємо довжину гілки
 
-    draw(x, y, u + pi/4, length);   //left
-    draw(x, y, u - pi/6, length);   //right
+    //рахуємо координати кінця гілки
+    const endX = x + length * Math.cos(u);
+    const endY = y - length * Math.sin(u);
+
+    draw(endX, endY, u + Math.PI / 4, length);   //left
+    draw(endX, endY, u - Math.PI / 6, length);   //right
 
 }
+
+const startLength = 200;            //початкова довжина
+const startAngle = Math.PI / 2;     //початковий кут, 90 градусів у радіанах
+
+//стартові координати (центруємо на нашому Canvas 800x600)
+const startX = canvas.width / 2;    //400 (центр по горизонталі)
+const startY = canvas.height;               //600 (самий низ полотна)
+
