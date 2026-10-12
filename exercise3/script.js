@@ -21,6 +21,7 @@ function draw(x, y, u, length){
     //рекурсія
     draw(endX, endY, u + Math.PI / 4, length);   //left
     draw(endX, endY, u - Math.PI / 6, length);   //right
+    // для уникнення асиметрії, кути потрібно зробити однаковими, наприклад pi/5
 
 }
 
