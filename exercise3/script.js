@@ -12,6 +12,13 @@ function draw(x, y, u, length){
     const endX = x + length * Math.cos(u);
     const endY = y - length * Math.sin(u);
 
+    //відмальовка гілки
+    ctx.beginPath();
+    ctx.moveTo(x, y);           //ставимо маркер в початок гілки
+    ctx.lineTo(endX, endY);     //проводимо лінію до кінцевих координат
+    ctx.stroke();
+
+    //рекурсія
     draw(endX, endY, u + Math.PI / 4, length);   //left
     draw(endX, endY, u - Math.PI / 6, length);   //right
 
@@ -24,3 +31,4 @@ const startAngle = Math.PI / 2;     //початковий кут, 90 граду
 const startX = canvas.width / 2;    //400 (центр по горизонталі)
 const startY = canvas.height;               //600 (самий низ полотна)
 
+draw(startX, startY, startAngle, startLength);
