@@ -3,14 +3,14 @@ const ctx = canvas.getContext('2d');
 
 function drawRect(x, y, l, a){
     ctx.beginPath();
-    ctx.moveTo(x, y);
+    ctx.moveTo(x, y);                                                   //вершина А
     //прорахунок 4-х кутів квадрата
-    ctx.lineTo(x + l * Math.cos(a), y - l * Math.sin(a));
-    ctx.lineTo(
+    ctx.lineTo(x + l * Math.cos(a), y - l * Math.sin(a));         //вершина B
+    ctx.lineTo(                                                         //вершина C
       x + l * Math.sqrt(2) * Math.cos(a + Math.PI / 4),
       y - l * Math.sqrt(2) * Math.sin(a + Math.PI / 4)
     );
-    ctx.lineTo(x + l * Math.cos(a + Math.PI / 2), y - l * Math.sin(a + Math.PI / 2));
+    ctx.lineTo(x + l * Math.cos(a + Math.PI / 2), y - l * Math.sin(a + Math.PI / 2));   //вершина D
     ctx.closePath();
     ctx.stroke();
 }
@@ -21,7 +21,7 @@ function drawTreeSquares(x, y, l, a){
     if(l > 4){
         drawRect(x, y, l, a);
 
-        //рахуємо довжину сторони для наступних квадратів
+        //рахуємо довжину сторони для наступних квадратів, приблизно x0,7
         const newL = l / Math.sqrt(2);
 
         //рекурсія для лівого квадрата, координати зміщуються на верхній лівий кут поточного

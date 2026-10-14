@@ -14,7 +14,7 @@ function drawCantor(x, y, length){
 
     //рекурсія (онлі лівий та правий відрізок, відкидаємо центральний)
     drawCantor(x, newY, newLength);
-    drawCantor(x + 2 * newLength, newY, newLength);
+    к
 }
 
 const startX = 50;
